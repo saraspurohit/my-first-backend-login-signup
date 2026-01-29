@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome | Auth System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+
+<div class="hero">
+    <div class="card">
+        <h1>Welcome 👋</h1>
+        <p>Login to your account or create a new one to continue</p>
+
+        <div class="buttons">
+            <a href="{{ url_for('login') }}" class="btn login">Login</a>
+            <a href="{{ url_for('signup') }}" class="btn signup">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

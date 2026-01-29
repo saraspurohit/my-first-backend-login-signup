@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    {% if error %}
+    <div class="popup">
+        <p>{{ error }}</p>
+        <button onclick="this.parentElement.style.display='none'">OK</button>
+    </div>
+    {% endif %}
+
+    <form action="{{ url_for('create_account') }}" method="POST">
+        <h2>Create Account</h2>
+
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Choose a username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Create a password" required>
+
+        <label>Confirm Password</label>
+        <input type="password" name="confirm_password" placeholder="Confirm password" required>
+
+        <input type="submit" value="Sign Up">
+
+        <p style="margin-top:15px; font-size:14px;">
+            Already have an account?
+            <a href="{{ url_for('login') }}" style="color:#ffd700;">Login</a>
+        </p>
+    </form>
+
+</div>
+
+</body>
+</html>

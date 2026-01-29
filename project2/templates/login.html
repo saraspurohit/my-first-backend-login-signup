@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+{% if error %}
+<div class="popup">
+    <p>{{ error }}</p>
+    <button onclick="closePopup()">OK</button>
+</div>
+{% endif %}
+
+<div class="container">
+    <form action="/submit" method="POST">
+        <h2>Login</h2>
+
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <input type="submit" value="Login">
+    </form>
+</div>
+
+<script>
+function closePopup() {
+    document.querySelector(".popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
