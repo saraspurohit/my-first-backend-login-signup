@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Student</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-box">
+    <h2>Edit {{ student.Name }}</h2>
+
+    <form method="POST">
+      <input type="number" name="marks" value="{{ student.Marks }}" min="0" max="100" required>
+      <button type="submit">Update</button>
+    </form>
+
+    <a href="/dashboard">⬅ Back</a>
+  </div>
+</div>
+
+</body>
+</html>

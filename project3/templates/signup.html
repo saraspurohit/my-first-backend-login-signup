@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-box">
+    <h2>Create Account</h2>
+
+    {% for m in get_flashed_messages() %}
+      <div class="popup">{{ m }}</div>
+    {% endfor %}
+
+    <form method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <a href="/login">Already have an account?</a>
+  </div>
+</div>
+
+</body>
+</html>

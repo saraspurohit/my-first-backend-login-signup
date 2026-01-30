@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Student</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-box">
+    <h2>Add Student</h2>
+
+    {% for m in get_flashed_messages() %}
+      <div class="popup">{{ m }}</div>
+    {% endfor %}
+
+    <form method="POST">
+      <input type="text" name="name" placeholder="Student Name" required>
+      <input type="number" name="marks" placeholder="Marks (0–100)" min="0" max="100" required>
+      <button type="submit">Save</button>
+    </form>
+
+    <a href="/dashboard">⬅ Back</a>
+  </div>
+</div>
+
+</body>
+</html>

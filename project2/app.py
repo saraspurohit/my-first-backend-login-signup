@@ -20,7 +20,7 @@ def submit():
     password=request.form.get("password")
        
     data = {}
-    with open("./project2/data.txt", "r") as file:
+    with open("./data.txt", "r") as file:
         for line in file:
             line = line.strip()
             if line:
@@ -42,7 +42,8 @@ def create_account():
         return render_template("signup.html", error="❌ Passwords do not match")
 
     data = {}
-    with open("./project2/data.txt", "r") as file:
+    
+    with open("./data.txt", "r") as file:
         for line in file:
             line = line.strip()
             if line:
@@ -53,7 +54,7 @@ def create_account():
     if username in data:
         return render_template("signup.html", error="❌ Username already exists")
 
-    with open("./project2/data.txt", "a") as file:
+    with open("./data.txt", "a") as file:
         file.write(f"{username},{password}\n")
 
     return render_template("welcome.html",name=username,sy="\n SUCCESFULLY SIGN UP", error="✅ Account created!")

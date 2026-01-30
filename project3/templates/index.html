@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<body>
+<div class="dashboard-page">
+  <div class="dashboard">
+
+    <div class="header">
+      <h2>Welcome, {{ user }}</h2>
+      <a href="/logout" class="btn danger">Logout</a>
+    </div>
+
+    <div class="actions">
+      <a href="/add" class="btn">➕ Add Student</a>
+      <a href="/represent" class="btn">📊 Represent</a>
+    </div>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Marks</th>
+        <th>Actions</th>
+      </tr>
+      {% for s in data %}
+      <tr>
+        <td>{{ s.Name }}</td>
+        <td>{{ s.Marks }}</td>
+       <td class="actions-cell">
+  <a href="/edit/{{ s.Name }}" class="btn">Edit</a>
+  <a href="/delete/{{ s.Name }}" class="btn danger">Delete</a>
+</td>
+
+      </tr>
+      {% endfor %}
+    </table>
+
+  </div>
+</div>
+</body>
+
+</body>
+</html>

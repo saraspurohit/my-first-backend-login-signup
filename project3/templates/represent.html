@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Representation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Student Performance</h2>
+
+  <canvas id="chart"></canvas>
+
+  <a href="/dashboard" class="btn">⬅ Back</a>
+</div>
+
+<script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+
+<script>
+  const names = {{ names | safe }};
+  const marks = {{ marks | safe }};
+  drawChart(names, marks);
+</script>
+
+</body>
+</html>
