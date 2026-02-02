@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Success{% endblock %}
+
+{% block content %}
+<div style="text-align:center;">
+
+    <h2>🎉 Registration Successful!</h2>
+    <p style="font-size:18px;">
+        Thank you for registering. Your account has been created successfully.
+    </p>
+
+    <hr style="margin:30px 0;">
+
+    <h3>What would you like to do next?</h3>
+
+    <div style="margin-top:20px;">
+        <a href="/">
+            <button>Register Another User</button>
+        </a>
+    </div>
+
+    <div style="margin-top:30px;">
+        <p style="color:#555;">
+            You can now proceed to login, explore dashboards, or connect this form to a database.
+        </p>
+    </div>
+
+    <div style="margin-top:40px; padding:20px; background:#f3f4f6; border-radius:10px;">
+        <h4>🚀 Next Upgrade Ideas</h4>
+        <ul style="text-align:left; display:inline-block;">
+            <li>Add Login System</li>
+            <li>Connect MySQL / SQLite</li>
+            <li>Email Verification</li>
+            <li>Password Hashing</li>
+            <li>User Dashboard</li>
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

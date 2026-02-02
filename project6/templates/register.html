@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<h2>Register Here</h2>
+
+<form method="POST" action="/" id="registerForm">
+    {{ form.hidden_tag() }}
+
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(id="name", size=32) }}
+        <small id="nameError" style="color:red;"></small>
+    </p>
+
+    <p>
+        {{ form.email.label }}<br>
+        {{ form.email(id="email", size=32) }}
+        <small id="emailError" style="color:red;"></small>
+    </p>
+
+    <p>
+        {{ form.password.label }}<br>
+        {{ form.password(id="password", size=32) }}
+        <br>
+        <input type="checkbox" onclick="togglePassword()"> Show Password
+        <small id="passwordError" style="color:red;"></small>
+    </p>
+
+    <p>
+        {{ form.submit(id="submitBtn") }}
+    </p>
+</form>
+
+<script>
+/* Show / Hide Password */
+function togglePassword(){
+    const pwd = document.getElementById("password");
+    pwd.type = pwd.type === "password" ? "text" : "password";
+}
+
+/* Live Validation */
+document.getElementById("registerForm").addEventListener("submit", function(e){
+    let valid = true;
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    document.getElementById("nameError").innerText = "";
+    document.getElementById("emailError").innerText = "";
+    document.getElementById("passwordError").innerText = "";
+
+    if(name.length < 3){
+        document.getElementById("nameError").innerText = "Name must be at least 3 characters";
+        valid = false;
+    }
+
+    if(!email.includes("@")){
+        document.getElementById("emailError").innerText = "Invalid email format";
+        valid = false;
+    }
+
+    if(password.length < 6){
+        document.getElementById("passwordError").innerText = "Password must be 6+ characters";
+        valid = false;
+    }
+
+    if(!valid){
+        e.preventDefault();
+    } else {
+        document.getElementById("submitBtn").value = "Registering...";
+        document.getElementById("submitBtn").disabled = true;
+    }
+});
+</script>
+
+{% endblock %}

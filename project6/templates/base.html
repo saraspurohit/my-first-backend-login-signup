@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Flask WTF Form{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, Helvetica, sans-serif;
+            background:linear-gradient(135deg,#667eea,#764ba2);
+            min-height:100vh;
+            color:#333;
+        }
+
+        header{
+            background:#111;
+            color:white;
+            padding:15px 30px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        header h1{
+            margin:0;
+            font-size:22px;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:15px;
+            font-weight:bold;
+        }
+
+        nav a:hover{
+            color:#ffd369;
+        }
+
+        .container{
+            max-width:900px;
+            margin:40px auto;
+            background:white;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .flash{
+            padding:12px;
+            border-radius:6px;
+            margin-bottom:15px;
+            font-weight:bold;
+        }
+
+        .success{
+            background:#e6fffa;
+            color:#065f46;
+            border-left:6px solid #10b981;
+        }
+
+        footer{
+            text-align:center;
+            padding:15px;
+            color:white;
+            font-size:14px;
+            opacity:0.8;
+        }
+
+        button{
+            background:#667eea;
+            color:white;
+            padding:10px 20px;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#5a67d8;
+        }
+
+        input{
+    padding:8px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    width:100%;
+}
+
+input:focus{
+    outline:none;
+    border-color:#667eea;
+    box-shadow:0 0 6px rgba(102,126,234,0.6);
+}
+
+    </style>
+</head>
+
+<body>
+<script>
+/* Auto hide flash messages */
+setTimeout(() => {
+    document.querySelectorAll(".flash").forEach(msg => {
+        msg.style.opacity = "0";
+        msg.style.transition = "opacity 1s";
+        setTimeout(() => msg.remove(), 1000);
+    });
+}, 3000);
+</script>
+
+<header>
+    <h1>Flask-WTF Registration</h1>
+    <nav>
+        <a href="/">Register</a>
+        <a href="/success">Success</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        {% for category, msg in messages %}
+          <div class="flash {{ category }}">
+              {{ msg }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+</div>
+
+<footer>
+    🚀 Built with Flask & WTForms | Practice Project
+</footer>
+
+</body>
+</html>
